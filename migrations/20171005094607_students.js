@@ -4,7 +4,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('students', (table) => {
     table.increments();
     table.string('name').notNullable().defaultTo('');
-    table.string('age').notNullable().defaultTo('');
+    table.string('mantra').notNullable().defaultTo('');
     table.timestamps(true, true);
   });
 };

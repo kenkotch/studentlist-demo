@@ -41,17 +41,17 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const { name, age } = req.body;
+  const { name, mantra } = req.body;
 
   if (!name || !name.trim()) {
     return next(boom.create(400, 'Name must not be blank'));
   }
 
-  if (!age || !age.trim()) {
-    return next(boom.create(400, 'Age must not be balnk'));
+  if (!mantra || !mantra.trim()) {
+    return next(boom.create(400, 'mantra must not be balnk'));
   }
 
-  const insertStudent = { name, age };
+  const insertStudent = { name, mantra };
 
   knex('students')
     .insert(insertStudent, '*')
@@ -78,15 +78,15 @@ router.patch('/:id', (req, res, next) => {
         throw boom.create(404, 'Not Found');
       }
 
-      const { name, age } = req.body;
+      const { name, mantra } = req.body;
       const updateStudent = {};
 
       if (name) {
         updateStudent.name = name;
       }
 
-      if (age) {
-        updateStudent.age = age;
+      if (mantra) {
+        updateStudent.mantra = mantra;
       }
 
       return knex('students')
